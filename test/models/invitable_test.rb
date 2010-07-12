@@ -106,7 +106,7 @@ class InvitableTest < ActiveSupport::TestCase
     user = create_user
     invited_user = User.send_invitation(:email => user.email)
     assert_equal invited_user, user
-    assert_equal ['is already taken'], invited_user.errors[:email]
+    assert_equal ['has already been taken'], invited_user.errors[:email]
   end
 
   test 'should return a new record with errors if e-mail is blank' do
@@ -151,7 +151,7 @@ class InvitableTest < ActiveSupport::TestCase
     assert_equal ["is invalid"], invited_user.errors[:invitation_token]
   end
 
-  test 'should set successfully user password given the new password and confirmation' do
+  test 'should set successfully user password given the new password and confirmation' do;1/0
     user = new_user(:password => nil, :password_confirmation => nil)
     user.resend_invitation!
 
